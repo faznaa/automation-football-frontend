@@ -3,7 +3,7 @@ import Button from "./Button";
 import axios from "axios";
 import CsvDownloadButton from "react-json-to-csv";
 
-export default function LadderBoard() {
+export default function FixtureBoard() {
   const [url, setUrl] = useState("");
   const [data, setData] = useState<any>([]);
   const [loading, setLoading] = useState(false);
@@ -11,7 +11,7 @@ export default function LadderBoard() {
     setLoading(true);
     try {
       const { data } = await axios.post(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/ladder`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/fixture`,
         { url: url }
       );
       if (data?.data) {
@@ -23,46 +23,32 @@ export default function LadderBoard() {
       setLoading(false);
     }
   };
+  const headingAddOn = [
+    'Team 1',
+    'Team 2'
+  ]
   const ladderKeys = [
-    "a",
-    "Team",
-    "P",
-    "PTS",
-    "%",
-    "W",
-    "L",
-    "D",
-    "BYE",
-    "F",
-    "A",
-    "FORF",
+    "time",
+    "firstVenue"
   ];
   const headings:any = {
-    a: "Rank",
-    Team: "Team",
-    P: "P",
-    PTS: "PTS",
-    "%": "%",
-    W: "W",
-    L: "L",
-    D: "D",
-    BYE: "BYE",
-    F: "F",
-    A: "A",
-    FORF: "FORF",
+    'time':"Time",
+    'firstVenue':"Venue",
+    'Team 1':'Team 1',
+    'Team 2':'Team 2'
   }
   // const download = () => {};
 
   return (
     <div className="w-full bg-white p-6 rounded-xl min-h-screen">
-      <h1 className="text-4xl font-bold mb-8">Ladder</h1>
+      <h1 className="text-4xl font-bold mb-8">Fixture</h1>
       <div className="flex justify-between items-center gap-x-6">
         <input
           type="text"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           placeholder="Paste your link here"
-          className="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-0 placeholder:text-gray-400  sm:text-sm sm:leading-6"
+          className="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
         />
         <div className="flex justify-center w-full sm:max-w-sm">
           <Button loading={loading} onClick={() => generateTable()}>
@@ -72,13 +58,15 @@ export default function LadderBoard() {
       </div>
 
       {/* TABLE */}
-      {data?.length > 0 && (
+      {data?.data?.length > 0 && (
         <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8 mt-4">
+          <h3 className="text-xl font-bold mb-4">{data?.round}</h3>
+          <p className="text-sm text-gray-500 mb-4">{data?.date}</p>
           <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
             <table className="min-w-full divide-y divide-gray-300">
               <thead className="bg-gray-200">
                 <tr>
-                  {ladderKeys.map((key) => (
+                  {headingAddOn.concat(ladderKeys).map((key) => (
                     <th
                       scope="col"
                       className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
@@ -86,20 +74,29 @@ export default function LadderBoard() {
                       {headings[key]}
                     </th>
                   ))}
+                  
                   {/* <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-0">
                     <span className="sr-only">Edit</span>
                   </th> */}
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
-                {data.map((team: any) => (
-                  <tr key={team.Team}  className="even:bg-gray-50 odd:bg-white">
+                {data?.data?.map((team: any) => (
+                  <tr key={team.Team} className="even:bg-gray-50 odd:bg-white">
+                     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                        {team.teams[0]}
+                      </td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                      {team.teams[1]}
+                      </td>
                     {ladderKeys.map((key) => (
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                         {team[key]}
                       </td>
                     ))}
+                    
                   </tr>
+
                 ))}
               </tbody>
             </table>
@@ -107,11 +104,10 @@ export default function LadderBoard() {
         </div>
       )}
       {/* Download button  */}
-      {/* <Button className="mt-4" onClick={() => download()}>Download</Button> */}
-      {data?.length > 0 && (
+      {data?.data?.length > 0 && (
         <CsvDownloadButton
           data={data}
-          filename="ladder_data.csv"
+          filename="fixture_data.csv"
           style={{
             //pass other props, like styles
             boxShadow: "inset 0px 1px 0px 0px #e184f3",

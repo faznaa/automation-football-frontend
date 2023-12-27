@@ -3,7 +3,7 @@ import Button from "./Button";
 import axios from "axios";
 import CsvDownloadButton from "react-json-to-csv";
 
-export default function LadderBoard() {
+export default function StatisticBoard() {
   const [url, setUrl] = useState("");
   const [data, setData] = useState<any>([]);
   const [loading, setLoading] = useState(false);
@@ -11,7 +11,7 @@ export default function LadderBoard() {
     setLoading(true);
     try {
       const { data } = await axios.post(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/ladder`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/statistics`,
         { url: url }
       );
       if (data?.data) {
@@ -24,38 +24,26 @@ export default function LadderBoard() {
     }
   };
   const ladderKeys = [
-    "a",
-    "Team",
-    "P",
-    "PTS",
-    "%",
-    "W",
-    "L",
-    "D",
-    "BYE",
-    "F",
-    "A",
-    "FORF",
+    "rank",
+   "player",
+   'team',
+   "gp",
+   "g",
+   "bp"
   ];
   const headings:any = {
-    a: "Rank",
-    Team: "Team",
-    P: "P",
-    PTS: "PTS",
-    "%": "%",
-    W: "W",
-    L: "L",
-    D: "D",
-    BYE: "BYE",
-    F: "F",
-    A: "A",
-    FORF: "FORF",
+    rank: "Rank",
+    player: "Player",
+    team: "Team",
+    gp: "GP",
+    g: "G",
+    bp: "BP",
   }
   // const download = () => {};
 
   return (
     <div className="w-full bg-white p-6 rounded-xl min-h-screen">
-      <h1 className="text-4xl font-bold mb-8">Ladder</h1>
+      <h1 className="text-4xl font-bold mb-8">Statistic</h1>
       <div className="flex justify-between items-center gap-x-6">
         <input
           type="text"
@@ -72,7 +60,7 @@ export default function LadderBoard() {
       </div>
 
       {/* TABLE */}
-      {data?.length > 0 && (
+      {data?.data?.length > 0 && (
         <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8 mt-4">
           <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
             <table className="min-w-full divide-y divide-gray-300">
@@ -92,7 +80,7 @@ export default function LadderBoard() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
-                {data.map((team: any) => (
+                {data?.data?.map((team: any) => (
                   <tr key={team.Team}  className="even:bg-gray-50 odd:bg-white">
                     {ladderKeys.map((key) => (
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
@@ -108,10 +96,10 @@ export default function LadderBoard() {
       )}
       {/* Download button  */}
       {/* <Button className="mt-4" onClick={() => download()}>Download</Button> */}
-      {data?.length > 0 && (
+      {data?.data?.length > 0 && (
         <CsvDownloadButton
           data={data}
-          filename="ladder_data.csv"
+          filename="statistics_data.csv"
           style={{
             //pass other props, like styles
             boxShadow: "inset 0px 1px 0px 0px #e184f3",
