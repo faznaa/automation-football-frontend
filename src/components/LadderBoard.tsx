@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Button from "./Button";
 import axios from "axios";
 import CsvDownloadButton from "react-json-to-csv";
+import { toast } from "react-toastify";
 
 export default function LadderBoard() {
   const [url, setUrl] = useState("");
@@ -19,8 +20,10 @@ export default function LadderBoard() {
       }
     } catch (err) {
       console.log(err);
+      toast.error("Something went wrong");
     } finally {
       setLoading(false);
+      setUrl("");
     }
   };
   const ladderKeys = [
