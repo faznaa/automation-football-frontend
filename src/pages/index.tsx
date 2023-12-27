@@ -11,7 +11,7 @@ function classNames(...classes:any) {
 }
 
 export default function Home() {
-  const categories =[ 'Ladder Board', 'Fixture','Statistics']
+  const categories =[ 'Ladder', 'Fixture','Statistics']
   return (
     <main
       className={`flex min-h-screen flex-col items-center justify-between p-24 bg-gray-100 text-black ${inter.className}`}
