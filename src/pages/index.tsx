@@ -4,6 +4,7 @@ import LadderBoard from '@/components/LadderBoard'
 import { Tab } from '@headlessui/react'
 import FixtureBoard from '@/components/FixtureBoard'
 import StatisticBoard from '@/components/StatisticsBoard'
+import HTMLCode from '@/components/HTMLCode'
 
 const inter = Inter({ subsets: ['latin'] })
 function classNames(...classes:any) {
@@ -16,7 +17,7 @@ export default function Home() {
     <main
       className={`flex min-h-screen flex-col items-center justify-between p-24 bg-gray-100 text-black ${inter.className}`}
     >
-      <Tab.Group>
+      {/* <Tab.Group>
         <Tab.List className="flex w-full space-x-1 rounded-xl  p-1">
           {categories.map((category) => (
             <Tab
@@ -46,7 +47,8 @@ export default function Home() {
             <StatisticBoard />
           </Tab.Panel>
         </Tab.Panels>
-        </Tab.Group>
+        </Tab.Group> */}
+        <HTMLCode />
           </main>
   )
 }

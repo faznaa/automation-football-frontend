@@ -27,7 +27,7 @@ export default function StatisticBoard() {
     }
   };
   const ladderKeys = [
-    "rank",
+   "rank",
    "player",
    'team',
    "gp",

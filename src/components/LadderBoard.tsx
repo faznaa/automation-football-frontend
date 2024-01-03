@@ -3,6 +3,7 @@ import Button from "./Button";
 import axios from "axios";
 import CsvDownloadButton from "react-json-to-csv";
 import { toast } from "react-toastify";
+import { htmlLadderTemplate } from "@/helpers/convertToHtml";
 
 export default function LadderBoard() {
   const [url, setUrl] = useState("");
@@ -74,6 +75,7 @@ export default function LadderBoard() {
         </div>
       </div>
 
+      {data?.length > 0 && htmlLadderTemplate("Ladder",data)}
       {/* TABLE */}
       {data?.length > 0 && (
         <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8 mt-4">
