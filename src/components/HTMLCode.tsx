@@ -6,6 +6,11 @@ import { toast } from 'react-toastify'
 
 export default function HTMLCode() {
   const [url, setUrl] = useState("")
+  const [headings, setHeadings] = useState<any>({
+    statistics:'SFNL Game 2023',
+    ladder: 'SFNL Ladder 2023',
+    fixture: 'SFNL Fixture 2023'
+  })
   const [links,setLinks] = useState<any>({
     ladder: "",
     fixture: "",
@@ -89,9 +94,13 @@ const copyToClipboard = (text:string) => {
       </div> */}
      
     <div >
-        {datas?.ladder?.length > 0 && <Button onClick={() => copyToClipboard(htmlLadderTemplate("Ladder",datas?.ladder))}>Copy Ladder data</Button>}
+        {datas?.ladder?.length > 0 &&<>
+          <input type="text" value={headings.ladder} onChange={(e) => setHeadings({...headings,ladder: e.target.value})} placeholder="Enter heading for ladder table" className="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-0 placeholder:text-gray-400  sm:text-sm sm:leading-6" />
+
+        <Button onClick={() => copyToClipboard(htmlLadderTemplate(headings.ladder,datas?.ladder))}>Copy Ladder data</Button></>}
         {datas?.statistics?.length > 0 &&<>
-        <Button onClick={() => copyToClipboard(htmlStatisticsTemplate("Statistics",datas?.statistics))}>Copy Statistics data</Button></> }
+        <input type="text" value={headings.statistics} onChange={(e) => setHeadings({...headings,statistics: e.target.value})} placeholder="Enter heading for statistics table" className="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-0 placeholder:text-gray-400  sm:text-sm sm:leading-6" />
+        <Button onClick={() => copyToClipboard(htmlStatisticsTemplate(headings.statistics,datas?.statistics))}>Copy Statistics data</Button></> }
     </div>
 
     </div>
