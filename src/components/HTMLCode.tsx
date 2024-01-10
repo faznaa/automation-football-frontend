@@ -119,6 +119,8 @@ export default function HTMLCode() {
                 className="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-0 placeholder:text-gray-400  sm:text-sm sm:leading-6"
               />
             </div>
+            <div dangerouslySetInnerHTML={{ __html: htmlLadderTemplate(headings.ladder, datas?.ladder) }} />
+          {/* <iframe className="w-1/3 ">{htmlLadderTemplate(headings.ladder, datas?.ladder)}</iframe> */}
             <textarea 
             value={htmlLadderTemplate(headings.ladder, datas?.ladder)}
             rows={4}

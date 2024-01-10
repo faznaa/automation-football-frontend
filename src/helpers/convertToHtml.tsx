@@ -12,29 +12,30 @@ const ladderKeys = [
     "A",
     "FORF",
   ];
+//   <table width="95%">
+// <tbody>
+// <tr style="height: 47.4688px">
+// <td style="height: 47.4688px" align="right">
+// <h2 class="fusion-responsive-typography-calculated" data-fontsize="35" data-lineheight="42px">__________</h2>
+// </td>
+// </tr>
+// </tbody>
+// </table>
 export const htmlLadderTemplate = (title:string,data:any) =>  `
 <div>
 <div>
-<table width="95%">
+<table style="margin-right: 70px;float: right" width="100%">
 <tbody>
-<tr>
-<td align="right">
-<h1 class="fusion-responsive-typography-calculated" data-fontsize="45" data-lineheight="54px"><strong>${title}</strong></h1>
+<tr style="height: 40px">
+<td style="height: 40px" align="right">
+<h2 class="fusion-responsive-typography-calculated" style="color: dodgerblue" data-fontsize="35" data-lineheight="40px"><strong>2023 SANFL RESERVES PREMIERSHIP TABLE</strong></h2>
 </td>
 </tr>
 </tbody>
 </table>
 </div>
 <div>
-<table width="95%">
-<tbody>
-<tr style="height: 47.4688px">
-<td style="height: 47.4688px" align="right">
-<h2 class="fusion-responsive-typography-calculated" data-fontsize="35" data-lineheight="42px">__________</h2>
-</td>
-</tr>
-</tbody>
-</table>
+
 </div>
 <h2 class="fusion-responsive-typography-calculated" data-fontsize="35" data-lineheight="42px"> </h2>
 <table dir="ltr" style="width: 90%;margin-left: auto;margin-right: auto" border=".5" cellpadding="5"><colgroup><col width="23" /><col width="123" /><col width="16" /><col width="32" /><col width="43" /><col width="20" /><col width="15" /><col width="16" /><col width="33" /><col width="42" /></colgroup>
@@ -42,14 +43,16 @@ export const htmlLadderTemplate = (title:string,data:any) =>  `
 <tr>
 <td style="text-align: center;vertical-align: middle"> </td>
 <td><strong>TEAM</strong></td>
-<td style="text-align: center;vertical-align: middle"><strong>P</strong></td>
-<td style="text-align: center;vertical-align: middle"><strong>PTS</strong></td>
-<td style="text-align: center;vertical-align: middle"><strong>%</strong></td>
-<td style="text-align: center;vertical-align: middle"><strong>W</strong></td>
-<td style="text-align: center;vertical-align: middle"><strong>L</strong></td>
-<td style="text-align: center;vertical-align: middle"><strong>D</strong></td>
-<td style="text-align: center;vertical-align: middle"><strong>FOR</strong></td>
-<td style="text-align: center;vertical-align: middle"><strong>AGST</strong></td>
+<td style="text-align: center"><strong>P</strong></td>
+<td style="text-align: center"><strong>PTS</strong></td>
+<td style="text-align: center"><strong>%</strong></td>
+<td style="text-align: center"><strong>W</strong></td>
+<td style="text-align: center"><strong>L</strong></td>
+<td style="text-align: center"><strong>D</strong></td>
+<td style="text-align: center"><strong>BYE</strong></td>
+<td style="text-align: center"><strong>F</strong></td>
+<td style="text-align: center"><strong>A</strong></td>
+<td style="text-align: center"><strong>FORF</strong></td>
 </tr>
 ${data.map((team: any)  => `
 <tr>
@@ -57,35 +60,16 @@ ${data.map((team: any)  => `
 <td>${team[ladderKeys[1]]}</td>
 ${ladderKeys.slice(2).map((key)  => `<td style="text-align: center;vertical-align: middle">${team[key]}</td>`).join(" ")}
 </tr>`).join("")}
-<tr>
-<td style="text-align: center;vertical-align: middle">2</td>
-<td>Brisbane Lions</td>
-<td style="text-align: center;vertical-align: middle">23</td>
-<td style="text-align: center;vertical-align: middle">68</td>
-<td style="text-align: center;vertical-align: middle">123.1</td>
-<td style="text-align: center;vertical-align: middle">17</td>
-<td style="text-align: center;vertical-align: middle">6</td>
-<td style="text-align: center;vertical-align: middle">0</td>
-<td style="text-align: center;vertical-align: middle">2180</td>
-<td style="text-align: center;vertical-align: middle">1771</td>
-</tr>
+
 </tbody>
 </table>
 </div>
 <div>
-<table width="95%">
-<tbody>
-<tr>
-<td align="right">
-<h2 class="fusion-responsive-typography-calculated" data-fontsize="35" data-lineheight="42px">__________</h2>
-</td>
-</tr>
-</tbody>
-</table>
+
 </div>`
 
 export const htmlFixtureTemplate = (title:string,data:any) =>  `
-<div id="tabs_desc_3021_4" class="tab-pane active animated fadeInRight"><div><table width="95%"><tbody><tr><td align="right"><h2 class="fusion-responsive-typography-calculated" data-fontsize="35" data-lineheight="40px"><span style="color: dodgerblue;"><strong>
+<div id="tabs_desc_3021_4" class="tab-pane active animated fadeInRight"><div><table width="95%"><tbody><tr><td align="right"><h2 class="fusion-responsive-typography-calculated"  data-fontsize="35" data-lineheight="40px"><span style="color: dodgerblue;"><strong>
 SANFL U16s FINALS ROUND 1
 </strong></span></h2></td></tr></tbody></table></div>
 <div><table width="95%"><tbody><tr><td align="right"><h2><span style="color: #ffffff;">__________</span></h2></td></tr></tbody></table></div>
