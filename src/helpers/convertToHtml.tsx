@@ -28,7 +28,7 @@ export const htmlLadderTemplate = (title:string,data:any) =>  `
 <tbody>
 <tr style="height: 40px">
 <td style="height: 40px" align="right">
-<h2 class="fusion-responsive-typography-calculated" style="color: dodgerblue" data-fontsize="35" data-lineheight="40px"><strong>2023 SANFL RESERVES PREMIERSHIP TABLE</strong></h2>
+<h2 class="fusion-responsive-typography-calculated" style="color: dodgerblue" data-fontsize="35" data-lineheight="40px"><strong>${title}</strong></h2>
 </td>
 </tr>
 </tbody>
@@ -136,8 +136,8 @@ export const htmlStatisticsTemplate = (title:string,data:any) =>  `<div>
 <td style="text-align: center;vertical-align: middle" data-sheets-value="{"1":2,"2":"MATCHES"}" data-sheets-numberformat="{"1":1}"><strong>MATCHES</strong></td>
 <td style="text-align: center;vertical-align: middle" data-sheets-value="{"1":2,"2":"GOALS"}" data-sheets-numberformat="{"1":1}"><strong>GOALS</strong></td>
 </tr>
-${data.slice(0,10).map((team: any)  => `<tr>
-<td style="text-align: center;vertical-align: middle" data-sheets-value="{"1":2,"2":"${team[statisticsKeys[0]]}"}" data-sheets-numberformat="{"1":1}">${team['statisticsKeys[0]']}</td>
+${data.slice(0,26).map((team: any)  => `<tr>
+<td style="text-align: center;vertical-align: middle" data-sheets-value="{"1":2,"2":"${team[statisticsKeys[0]]}"}" data-sheets-numberformat="{"1":1}">${team[statisticsKeys[0]]}</td>
 <td data-sheets-value="{"1":2,"2":"${team[statisticsKeys[1]]}"}" data-sheets-numberformat="{"1":1}">${team[statisticsKeys[1]]}</td>
 <td data-sheets-value="{"1":2,"2":"${team[statisticsKeys[2]]}"}" data-sheets-numberformat="{"1":1}">${team[statisticsKeys[2]]}</td>
 <td style="text-align: center;vertical-align: middle" data-sheets-value="{"1":2,"2":"${team[statisticsKeys[3]]}"}" data-sheets-numberformat="{"1":1}">${team[statisticsKeys[3]]}</td>

@@ -153,6 +153,8 @@ export default function HTMLCode() {
               className="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-0 placeholder:text-gray-400  sm:text-sm sm:leading-6"
             />
             </div>
+            <div dangerouslySetInnerHTML={{ __html: htmlStatisticsTemplate(headings.statistics, datas?.statistics) }} />
+
             <textarea 
             value={htmlStatisticsTemplate(headings.statistics, datas?.statistics)}
             rows={4}
@@ -167,7 +169,7 @@ export default function HTMLCode() {
                 )
               }
             >
-              Copy Statistics data
+              Copy Goalkeepers data
             </Button>
           </div>
         )}
