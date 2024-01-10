@@ -136,7 +136,6 @@ export const htmlStatisticsTemplate = (title:string,data:any) =>  `<div>
 <td style="text-align: center;vertical-align: middle" data-sheets-value="{"1":2,"2":"MATCHES"}" data-sheets-numberformat="{"1":1}"><strong>MATCHES</strong></td>
 <td style="text-align: center;vertical-align: middle" data-sheets-value="{"1":2,"2":"GOALS"}" data-sheets-numberformat="{"1":1}"><strong>GOALS</strong></td>
 </tr>
----------------------^^^^^^^^^^^^^^^^^
 ${data.slice(0,10).map((team: any)  => `<tr>
 <td style="text-align: center;vertical-align: middle" data-sheets-value="{"1":2,"2":"${team[statisticsKeys[0]]}"}" data-sheets-numberformat="{"1":1}">${team['statisticsKeys[0]']}</td>
 <td data-sheets-value="{"1":2,"2":"${team[statisticsKeys[1]]}"}" data-sheets-numberformat="{"1":1}">${team[statisticsKeys[1]]}</td>
