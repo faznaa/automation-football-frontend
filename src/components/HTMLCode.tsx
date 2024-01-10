@@ -119,8 +119,10 @@ export default function HTMLCode() {
                 className="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-0 placeholder:text-gray-400  sm:text-sm sm:leading-6"
               />
             </div>
-            <div dangerouslySetInnerHTML={{ __html: htmlLadderTemplate(headings.ladder, datas?.ladder) }} />
+           <div className="flex items-center justify-between gap-x-10">
+           <div className="w-1/2 left-0 h-96 overflow-y-scroll" dangerouslySetInnerHTML={{ __html: htmlLadderTemplate(headings.ladder, datas?.ladder) }} />
           {/* <iframe className="w-1/3 ">{htmlLadderTemplate(headings.ladder, datas?.ladder)}</iframe> */}
+            <div className="w-full">
             <textarea 
             value={htmlLadderTemplate(headings.ladder, datas?.ladder)}
             rows={4}
@@ -135,7 +137,8 @@ export default function HTMLCode() {
               }
             >
               Copy Ladder data
-            </Button>
+            </Button></div>
+           </div>
           </div>
         )}
         {datas?.statistics?.length > 0 && (
@@ -153,24 +156,27 @@ export default function HTMLCode() {
               className="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-0 placeholder:text-gray-400  sm:text-sm sm:leading-6"
             />
             </div>
-            <div dangerouslySetInnerHTML={{ __html: htmlStatisticsTemplate(headings.statistics, datas?.statistics) }} />
+            <div className="flex items-center justify-between gap-x-10">
+            <div className="w-1/2 left-0 h-96 overflow-y-scroll" dangerouslySetInnerHTML={{ __html: htmlStatisticsTemplate(headings.statistics, datas?.statistics) }} />
 
-            <textarea 
-            value={htmlStatisticsTemplate(headings.statistics, datas?.statistics)}
-            rows={4}
-            name="comment"
-            id="comment"
-            className="block w-full lg:max-w-md rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 text-xs sm:leading-6"
-  /> 
-            <Button
-              onClick={() =>
-                copyToClipboard(
-                  htmlStatisticsTemplate(headings.statistics, datas?.statistics)
-                )
-              }
-            >
-              Copy Goalkeepers data
-            </Button>
+<div className="w-full">
+<textarea 
+value={htmlStatisticsTemplate(headings.statistics, datas?.statistics)}
+rows={4}
+name="comment"
+id="comment"
+className="block w-full lg:max-w-md rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 text-xs sm:leading-6"
+/> 
+<Button
+  onClick={() =>
+    copyToClipboard(
+      htmlStatisticsTemplate(headings.statistics, datas?.statistics)
+    )
+  }
+>
+  Copy Goalkeepers data
+</Button></div>
+</div>
           </div>
         )}
       </div>
