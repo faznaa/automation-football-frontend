@@ -34,37 +34,8 @@ export default function Home() {
         <p className="text-xl font-bold mb-8">Please try again in 5 minutes</p>
       </div> :         <HTMLCode />
 }
-      {/* <Tab.Group>
-        <Tab.List className="flex w-full space-x-1 rounded-xl  p-1">
-          {categories.map((category) => (
-            <Tab
-              key={category}
-              className={({ selected }) =>
-                classNames(
-                  'w-full  rounded-lg py-2.5 text-sm font-medium leading-5',
-                  'border-none focus:outline-none focus:ring-0 ',
-                  selected
-                    ? 'bg-gray-200 text-blue-700 shadow border-blue-700'
-                    : ' hover:text-blue-600'
-                )
-              }
-            >
-              {category}
-            </Tab>
-          ))}
-        </Tab.List>
-        <Tab.Panels className="mt-2 w-full">
-          <Tab.Panel className="bg-white rounded-xl p-3">
-            <LadderBoard />
-          </Tab.Panel>
-          <Tab.Panel className="bg-white rounded-xl p-3">
-            <FixtureBoard />
-          </Tab.Panel>
-          <Tab.Panel className="bg-white rounded-xl p-3">
-            <StatisticBoard />
-          </Tab.Panel>
-        </Tab.Panels>
-        </Tab.Group> */}
+{/* <HTMLCode/> */}
+    
           </main>
   )
 }
