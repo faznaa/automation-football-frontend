@@ -209,7 +209,6 @@ export default function HTMLCode() {
           statistics: statisticsData.data?.data,
           ladder: ladderData.data,
           result:_fixtureData.data,
-          blog:_fixtureData.blog
         });
       }
     } catch (err) {
@@ -262,7 +261,7 @@ function classNames(...classes:any) {
       </div>
       {datas?.ladder?.length > 0 && (<Tab.Group>
         <Tab.List className="flex w-full  justify-between text-center space-x-1 rounded-xl  p-1 font-semibold sm:min-w-sm">
-          {["Result", "Ladder", "GoalKickers","Blog"].map((category) => (
+          {["Result", "Ladder", "GoalKickers"].map((category) => (
             <Tab as={Fragment}>
               {({ selected }) => (
                 /* Use the `selected` state to conditionally style the selected tab. */
@@ -436,12 +435,7 @@ function classNames(...classes:any) {
             )}
           </Tab.Panel>
           {/* BLOG TAB  */}
-          <Tab.Panel className="mt-2 w-full">
-          <div className="my-4 bg-gray-100 p-4 rounded-md flex flex-col gap-2">
-            {datas?.blog }
-            <Button onClick={() => copyToClipboard(datas?.blog)}>Copy Blog</Button>
-            </div>
-          </Tab.Panel>
+          
         </Tab.Panels>
       </Tab.Group>)}
 
