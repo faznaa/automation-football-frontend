@@ -5,7 +5,8 @@ import GithubProvider from "next-auth/providers/github"
 const allowedEmails = [
     'fasnahareesfasna@gmail.com',
     'shabeeb248@gmail.com',
-    'thesafootballer@adam.com.au'
+    'thesafootballer@adam.com.au',
+    'ituralba.lyka@gmail.com'
 ]
 export const authOptions = {
   providers: [
