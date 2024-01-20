@@ -67,7 +67,7 @@ export const htmlLadderTemplate = (title:string,data:any) =>  `
 ${data.map((team: any)  => `
 <tr>
 <td style="text-align: center;vertical-align: middle">${team[ladderKeys[0]]}</td>
-<td>${team[ladderKeys[1]].split(" ")[0]}</td>
+<td>${team[ladderKeys[1]].replace("Football Club","").replace("Reserves","")}</td>
 ${ladderKeys.slice(2).map((key)  => `<td style="text-align: center;vertical-align: middle">${team[key]}</td>`).join(" ")}
 </tr>`).join("")}
 
@@ -294,10 +294,10 @@ export const htmlStatisticsTemplate = (title:string,data:any) =>  `<div>
 <td style="text-align: center;vertical-align: middle" data-sheets-value="{"1":2,"2":"MATCHES"}" data-sheets-numberformat="{"1":1}"><strong>MATCHES</strong></td>
 <td style="text-align: center;vertical-align: middle" data-sheets-value="{"1":2,"2":"GOALS"}" data-sheets-numberformat="{"1":1}"><strong>GOALS</strong></td>
 </tr>
-${data.toSorted((a:any,b:any) => parseInt(a.g) < parseInt(b.g))?.slice(0,26).map((team: any)  => `<tr>
+${data?.slice(0,26).map((team: any)  => `<tr>
 <td style="text-align: center;vertical-align: middle" data-sheets-value="{"1":2,"2":"${team[statisticsKeys[0]]}"}" data-sheets-numberformat="{"1":1}">${team[statisticsKeys[0]]}</td>
 <td data-sheets-value="{"1":2,"2":"${team[statisticsKeys[1]]}"}" data-sheets-numberformat="{"1":1}">${team[statisticsKeys[1]]}</td>
-<td data-sheets-value="{"1":2,"2":"${team[statisticsKeys[2]]?.split(" ")[0]}"}" data-sheets-numberformat="{"1":1}">${team[statisticsKeys[2]]?.split(" ")[0]}</td>
+<td data-sheets-value="{"1":2,"2":"${team[statisticsKeys[2]]}"}" data-sheets-numberformat="{"1":1}">${team[statisticsKeys[2]].replace("Football Club","").replace("Reserves","")}</td>
 <td style="text-align: center;vertical-align: middle" data-sheets-value="{"1":2,"2":"${team[statisticsKeys[3]]}"}" data-sheets-numberformat="{"1":1}">${team[statisticsKeys[3]]}</td>
 <td style="text-align: center;vertical-align: middle" data-sheets-value="{"1":3,"3":${team[statisticsKeys[4]]}}">${team[statisticsKeys[4]]}</td>
 </tr>`).join("")}

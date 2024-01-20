@@ -42,10 +42,10 @@ export default function Dashboard() {
   const [buttonActive, setButtonActive] = useState(false);
   const [url, setUrl] = useState("");
   const [datas, setDatas] = useState<any>({
-    blog:''
+    blogs:[]
   });
   useEffect(() => {
-    if (url && url.includes("/GF")) {
+    if (url) {
       setButtonActive(true);
     } else {
       setButtonActive(false);
@@ -60,13 +60,13 @@ export default function Dashboard() {
           `${process.env.NEXT_PUBLIC_BASE_URL}/blog`,
           { url }
         );
-      console.log(_fixtureData.blog)
+      console.log(_fixtureData.blogs)
     
      
-      if (_fixtureData.blog) {
+      if (_fixtureData.blogs) {
         setDatas({
           ...datas,
-          blog:_fixtureData.blog
+          blogs:_fixtureData.blogs
         });
       }
     } catch (err) {
@@ -141,10 +141,18 @@ function classNames(...classes:any) {
           </Button>
         </div>
 
-          {datas.blog && (<div className="my-4 bg-gray-100 p-4 rounded-md flex flex-col gap-2">
-            {datas?.blog }
+          {datas.blogs?.length > 0 && datas?.blogs?.map((blog:any) => (
+            <div>
+              <h1 className="text-2xl font-bold mb-3">{blog.team}</h1>
+              <p className='my-2'>Date : {blog.date}</p>
+              <p className='my-2'>Place : {blog.place}</p>  
+                <div className="my-4 bg-gray-100 p-4 rounded-md flex flex-col gap-2">
+            {blog.blog }
             <Button onClick={() => copyToClipboard(datas?.blog)}>Copy Blog</Button>
-            </div>)}
+            </div>
+              </div>
+            ))
+          }
             </div>
           </Tab.Panel>
         </Tab.Panels>

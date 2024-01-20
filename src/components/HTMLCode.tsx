@@ -399,19 +399,13 @@ function classNames(...classes:any) {
                   <div
                     className="w-1/2 left-0 h-96 overflow-y-scroll"
                     dangerouslySetInnerHTML={{
-                      __html: htmlStatisticsTemplate(
-                        headings.statistics,
-                        datas?.statistics
-                      ),
+                      __html: memoedHTMLStatisticsTemplate,
                     }}
                   />
 
                   <div className="w-full">
                     <textarea
-                      value={htmlStatisticsTemplate(
-                        headings.statistics,
-                        datas?.statistics
-                      )}
+                      value={memoedHTMLStatisticsTemplate}
                       rows={4}
                       name="comment"
                       id="comment"
@@ -420,10 +414,7 @@ function classNames(...classes:any) {
                     <Button
                       onClick={() =>
                         copyToClipboard(
-                          htmlStatisticsTemplate(
-                            headings.statistics,
-                            datas?.statistics
-                          )
+                          memoedHTMLStatisticsTemplate
                         )
                       }
                     >
