@@ -153,7 +153,7 @@ export default function HTMLCode() {
     result: {},
     blog:''
   });
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const memoedHTMLResultTemplate = React.useMemo(() =>{
     if(datas?.result?.scores?.length>0) {
       return htmlResultTemplate(
@@ -251,7 +251,7 @@ function classNames(...classes:any) {
 
         <div className="my-4 flex justify-center w-full sm:max-w-sm">
           <Button
-            disabled={!buttonActive}
+            disabled={buttonActive}
             loading={loading}
             onClick={() => generateTable()}
           >
