@@ -51,7 +51,7 @@ export default function Dashboard() {
       setButtonActive(false);
     }
   },[url])
-  const generateBlog = async () => {
+  const generateBlogOld = async () => {
     setLoading(true);
     try {
      
@@ -69,6 +69,44 @@ export default function Dashboard() {
           blogs:_fixtureData.blogs
         });
       }
+    } catch (err) {
+      console.log(err);
+      toast.error("Something went wrong");
+    } finally {
+      setLoading(false);
+    }
+  };
+  const generateBlog = async () => {
+    setLoading(true);
+    try {
+     
+
+      const { data:links } = await axios.post(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/links`,
+          { url }
+        );
+      const _links = links.data
+    
+      for (const link of _links) {
+        const { data:_fixtureData } = await axios.post(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/blog/single`,
+          { url:link }
+        );
+        toast.success("Blog Generated");
+        setDatas((prev:any) => {
+          return {
+            ...prev,
+            blogs:[...prev.blogs,_fixtureData.data]
+          }
+        })
+       
+      }
+      // if (_fixtureData.blogs) {
+      //   setDatas({
+      //     ...datas,
+      //     blogs:_fixtureData.blogs
+      //   });
+      // }
     } catch (err) {
       console.log(err);
       toast.error("Something went wrong");
