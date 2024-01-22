@@ -62,13 +62,12 @@ export const htmlLadderTemplate = (title:string,data:any) =>  `
 <td style="text-align: center"><strong>BYE</strong></td>
 <td style="text-align: center"><strong>F</strong></td>
 <td style="text-align: center"><strong>A</strong></td>
-<td style="text-align: center"><strong>FORF</strong></td>
 </tr>
 ${data.map((team: any)  => `
 <tr>
 <td style="text-align: center;vertical-align: middle">${team[ladderKeys[0]]}</td>
 <td>${team[ladderKeys[1]].replace("Football Club","").replace("Reserves","")}</td>
-${ladderKeys.slice(2).map((key)  => `<td style="text-align: center;vertical-align: middle">${team[key]}</td>`).join(" ")}
+${ladderKeys.slice(2,-1).map((key)  => `<td style="text-align: center;vertical-align: middle">${team[key]}</td>`).join(" ")}
 </tr>`).join("")}
 
 </tbody>

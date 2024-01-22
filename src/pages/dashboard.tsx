@@ -40,7 +40,7 @@ export default function Dashboard() {
   },[])
   const [loading, setLoading] = useState(false);
   const [buttonActive, setButtonActive] = useState(false);
-  const [url, setUrl] = useState("");
+  const [url, setUrl] = useState("")
   const [datas, setDatas] = useState<any>({
     blogs:[]
   });
@@ -86,6 +86,7 @@ export default function Dashboard() {
           { url }
         );
       const _links = links.data
+      
     
       for (const link of _links) {
         const { data:_fixtureData } = await axios.post(
@@ -101,12 +102,7 @@ export default function Dashboard() {
         })
        
       }
-      // if (_fixtureData.blogs) {
-      //   setDatas({
-      //     ...datas,
-      //     blogs:_fixtureData.blogs
-      //   });
-      // }
+    
     } catch (err) {
       console.log(err);
       toast.error("Something went wrong");
