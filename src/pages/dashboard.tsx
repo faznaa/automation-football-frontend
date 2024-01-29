@@ -22,11 +22,11 @@ function classNames(...classes:any) {
 export default function Dashboard() {
     const { data: session } = useSession()
     const router = useRouter()
-    useEffect(() => {
-        if(!session) {
-            router.push('/')
-        }
-    },[session])
+    // useEffect(() => {
+    //     if(!session) {
+    //         router.push('/')
+    //     }
+    // },[session])
   const categories =[ 'Ladder', 'Fixture','Statistics']
   const [isBackendRunning, setIsBackendRunning] = useState(false)
   useEffect(() => {
@@ -122,7 +122,7 @@ function classNames(...classes:any) {
     if(!session?.user?.email) return (<div>NOT LOGGED IN </div>)
   return (
   <>
-  <Navbar />
+  {/* <Navbar /> */}
   <main
       className={`flex min-h-screen flex-col items-center justify-between p-24 bg-gray-100 text-black ${inter.className}`}
     >
