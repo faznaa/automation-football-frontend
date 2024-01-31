@@ -119,7 +119,7 @@ export default function Dashboard() {
 function classNames(...classes:any) {
   return classes.filter(Boolean).join(' ')
 }
-    if(!session?.user?.email) return (<div>NOT LOGGED IN </div>)
+    // if(!session?.user?.email) return (<div>NOT LOGGED IN </div>)
   return (
   <>
   {/* <Navbar /> */}
