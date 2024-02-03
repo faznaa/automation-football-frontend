@@ -41,11 +41,12 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(false);
   const [buttonActive, setButtonActive] = useState(false);
   const [url, setUrl] = useState("")
+  const [prompt,setPrompt] = useState("")
   const [datas, setDatas] = useState<any>({
     blogs:[]
   });
   useEffect(() => {
-    if (url) {
+    if (url && prompt.length > 10) {
       setButtonActive(true);
     } else {
       setButtonActive(false);
@@ -91,7 +92,7 @@ export default function Dashboard() {
       for (const link of _links) {
         const { data:_fixtureData } = await axios.post(
           `${process.env.NEXT_PUBLIC_BASE_URL}/blog/single`,
-          { url:link }
+          { url:link, prompt }
         );
         toast.success("Blog Generated");
         setDatas((prev:any) => {
@@ -155,6 +156,13 @@ function classNames(...classes:any) {
           </Tab.Panel>
           <Tab.Panel className="mt-2 w-full">
           <div className="flex flex-col justify-between  gap-x-6 bg-gray-50 p-4 rounded-lg">
+          <label className="text-left">Prompt</label>
+          <textarea
+          value={prompt}
+          onChange={(e) => setPrompt(e.target.value)}
+          placeholder="Paste your prompt here"
+          className="pl-2 mb-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-0 placeholder:text-gray-400  sm:text-sm sm:leading-6"
+          />
         <label className="text-left">Gameboard URL</label>
         <input
           type="text"
