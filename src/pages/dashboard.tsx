@@ -51,7 +51,7 @@ export default function Dashboard() {
     } else {
       setButtonActive(false);
     }
-  },[url])
+  },[url,prompt])
   const generateBlogOld = async () => {
     setLoading(true);
     try {
