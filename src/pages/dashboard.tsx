@@ -13,6 +13,7 @@ import { useSession } from 'next-auth/react'
 import { redirect } from 'next/navigation'
 import { useRouter } from 'next/router'
 import Navbar from '@/components/Navbar'
+import UpcomingData from '@/components/UpcomingData'
 
 const inter = Inter({ subsets: ['latin'] })
 function classNames(...classes:any) {
@@ -133,7 +134,7 @@ function classNames(...classes:any) {
       </div> :       <div className='w-full'>
       <Tab.Group>
         <Tab.List className="flex p-1 space-x-1  rounded-xl">
-          {["HTML CODE","BLOG"].map((category) => (
+          {["HTML CODE","BLOG","UPCOMING DATA"].map((category) => (
             <Tab
               key={category}
               className={({ selected }) =>
@@ -196,6 +197,9 @@ function classNames(...classes:any) {
             ))
           }
             </div>
+          </Tab.Panel>
+          <Tab.Panel className="bg-gray-200 rounded-xl p-3">
+            <UpcomingData />
           </Tab.Panel>
         </Tab.Panels>
         </Tab.Group>

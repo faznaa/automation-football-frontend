@@ -313,3 +313,47 @@ ${data?.slice(0,26).map((team: any)  => `<tr>
 </table>
 </div>`
 
+
+export const htmlupcomingRoundTemplate = (title:string,data:any) =>  `
+<div><table style=""margin-right: 70px; float: right;"" width=""100%""><tbody><tr><td align=""right""><h2 class=""fusion-responsive-typography-calculated"" data-fontsize=""40"" data-lineheight=""50px""><span style=""color: dodgerblue; font-family: montserrat;""><strong>
+${title} ${data?.round}
+  </strong></span></h2></td></tr></tbody></table></div>
+  
+  <div><table style=""margin-right: 70px; float: right;"" width=""100%""><tbody><tr><td align=""right""><h2><span style=""color: #ffffff;"">__________</span></h2><h2><span style=""color: #000000;"">__________</span></h2></td></tr></tbody></table></div>
+  
+  <table style=""margin-right: 70px; float: right;"" width=""100%""><tbody><tr style=""height: auto;""><td style=""width: auto; text-align: right; vertical-align: top; height: auto;"">&nbsp;</td>
+
+${data?.teams?.slice(0,3).map((i:any) => `<td style=""width: 33%; height: auto; text-align: right; vertical-align: top;""><h3><span style=""color: #ffffff;""><strong>
+${i.teamNames[0]?.toUpperCase()}
+ </strong><em>&nbsp;&nbsp;v&nbsp;&nbsp;</em><strong>
+ ${i.teamNames[1]?.toUpperCase()}
+
+</strong></span></h3><span style=""color: #ffffff; font-family: verdana;""><strong>
+${i.date}
+</strong>
+${i.time}
+</span><br /><span style=""color: #ffffff; font-family: verdana;"">
+${i.location?.split('/')?.[1]}
+</span></td>`)}
+
+
+</tr></tbody></table>
+
+<div><table style=""margin-right: 70px; float: right;"" width=""100%""><tbody><tr><td style=""vertical-align: top;"" align=""right""><h2><span style=""color: #000000;"">__________</span></h2></td></tr></tbody></table><table style=""margin-right: 70px; float: right;"" width=""100%""><tbody><tr style=""height: auto;""><td style=""width: auto; text-align: right; vertical-align: top; height: auto;""><h3>&nbsp;</h3></td>
+
+${data?.teams?.slice(3,data?.teams?.length).map((i:any) => `<td style=""width: 33%; height: auto; text-align: right; vertical-align: top;""><h3><span style=""color: #ffffff;""><strong>
+${i.teamNames[0]?.toUpperCase()}
+ </strong><em>&nbsp;&nbsp;v&nbsp;&nbsp;</em><strong>
+ ${i.teamNames[1]?.toUpperCase()}
+
+</strong></span></h3><span style=""color: #ffffff; font-family: verdana;""><strong>
+${i.date}
+</strong>
+${i.time}
+</span><br /><span style=""color: #ffffff; font-family: verdana;"">
+${i.location?.split('/')?.[1]}
+</span></td>`)}
+
+</tr></tbody></table></div>
+
+`
